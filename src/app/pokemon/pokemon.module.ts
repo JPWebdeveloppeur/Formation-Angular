@@ -6,6 +6,7 @@ import {BorderCardDirective} from "./border-card.directive";
 import {PokemeonTypeColorPipe} from "./pokemeon-type-color.pipe";
 import {RouterModule, Routes} from "@angular/router";
 import {PageNotFoundComponent} from "../page-not-found/page-not-found.component";
+import {PokemonService} from "./pokemon.service";
 
 const pokemonRoutes: Routes = [
     { path: 'pokemons', component: ListPokemonComponent },
@@ -22,6 +23,7 @@ const pokemonRoutes: Routes = [
   imports: [
     CommonModule,
       RouterModule.forChild(pokemonRoutes)
-  ]
+  ],
+  providers: [PokemonService]
 })
 export class PokemonModule { }

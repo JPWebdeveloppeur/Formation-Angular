@@ -62,8 +62,6 @@ export class PokemonService {
       );
   }
 
-
-
   // Gestion des erreurs
   private log(response: any){
       console.table(response);
@@ -74,6 +72,17 @@ export class PokemonService {
       return of(errorValue);
   }
 
+  //Search
+  searchPokemonList(term: string): Observable<Pokemon[]>{
+      // empecher la recherche vide ou monoligne.
+      if (term.length <= 1){
+          return of([]);
+      }
+      return this.http.get<Pokemon[]>(`api/pokemons/?name=${term}`).pipe(
+          tap((response) => this.log(response)),
+          catchError((error) => this.handleError(error, []))
+      );
+  }
 
 
 }

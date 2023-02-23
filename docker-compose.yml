@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+    nginx:
+        container_name: pokedex
+        build:
+            context: .
+            dockerfile: ./docker/dockerfile
+        restart: unless-stopped
+        ports:
+            - "4200:80"
+networks:
+    pokedex:
+        external: true
